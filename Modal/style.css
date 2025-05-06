@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    background: linear-gradient(90deg, rgba(0, 255, 247, 1) 0%, rgba(0, 144, 247, 1) 100%);
+    font-family: "Roboto", sans-serif;
+
+}
+
+.modal {
+    background-color: white;
+    width: 500px;
+    padding: 10px 40px 40px 40px;
+    border-radius: 20px;
+    position: absolute;
+    top: 30%;
+    right: 35%;
+    z-index: 10;
+transition: all ease-in 0.3s;
+}
+.modal:hover{
+    box-shadow: -2px 8px 29px 4px rgba(0,0,0,0.62);
+}
+
+.closeBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    cursor: pointer;
+}
+
+.show_modal {
+    display: flex;
+    justify-content: center;
+}
+
+.showModal {
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.527);
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    z-index: 5;
+}
+
+p {
+    font-size: 20px;
+}
