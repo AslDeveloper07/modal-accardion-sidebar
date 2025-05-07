@@ -1,121 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accordion</title>
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-  <style>
-    .accordion-container {
-      width: 100%;
-      max-width: 600px;
-      margin: 20px auto;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    .accordion-item {
-      margin-bottom: 10px;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      border: 1px solid #ddd;
-    }
-
-    .accordion-header {
-      width: 100%;
-      padding: 15px 20px;
-      background: #4a6bff;
-      color: white;
-      border: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      transition: background 0.3s;
-      text-align: left;
-    }
-
-    .accordion-header:hover {
-      background: #3a5bef;
-    }
-
-    .accordion-icon {
-      transition: transform 0.3s ease;
-    }
-
-    .accordion-item.active .accordion-icon {
-      transform: rotate(90deg);
-    }
-
-    .accordion-content {
-      padding: 0;
-      background: white;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.3s ease;
-    }
-
-    .accordion-item.active .accordion-content {
-      padding: 15px 20px;
-      max-height: 500px;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accordion</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-  <div class="accordion-container">
-    <div class="accordion-item">
-      <button class="accordion-header">
-        <span>Section 1</span>
-        <i class="ri-arrow-down-s-line accordion-icon"></i>
-      </button>
-      <div class="accordion-content">
-        <p>Content for section 1 goes here.</p>
-      </div>
+    <div class="accordion-container">
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <span>Lorem ipsum dolor sit amet.</span>
+                <i class="ri-arrow-right-s-line accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi adipisci id eligendi voluptatibus
+                    iure totam consequatur non asperiores obcaecati nisi quos ut, vel alias recusandae sed, iusto optio
+                    suscipit possimus nesciunt illum libero, pariatur debitis officiis veritatis. Maxime, ea quasi!</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <span>Lorem ipsum dolor sit amet.</span>
+                <i class="ri-arrow-right-s-line accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos perferendis quidem officia deserunt
+                    quam. Veniam fugiat earum vero! Incidunt omnis facilis ipsa tenetur consectetur similique voluptate
+                    placeat, provident voluptatum, fugit, quas ullam mollitia architecto labore? Quidem officiis
+                    voluptas corporis! Doloribus.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <span>Lorem ipsum dolor sit amet.</span>
+                <i class="ri-arrow-right-s-line accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A quas necessitatibus rem quidem placeat
+                    officia aut, culpa qui molestiae quibusdam soluta maiores deserunt inventore. Repellat veniam,
+                    dolorum distinctio eius necessitatibus quis accusantium odio magni incidunt adipisci consequatur
+                    blanditiis aliquid accusamus?</p>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-container">
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <span>Lorem ipsum dolor sit amet.</span>
+                <i class="ri-arrow-right-s-line accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi adipisci id eligendi voluptatibus
+                    iure totam consequatur non asperiores obcaecati nisi quos ut, vel alias recusandae sed, iusto optio
+                    suscipit possimus nesciunt illum libero, pariatur debitis officiis veritatis. Maxime, ea quasi!</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <span>Lorem ipsum dolor sit amet.</span>
+                <i class="ri-arrow-right-s-line accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos perferendis quidem officia deserunt
+                    quam. Veniam fugiat earum vero! Incidunt omnis facilis ipsa tenetur consectetur similique voluptate
+                    placeat, provident voluptatum, fugit, quas ullam mollitia architecto labore? Quidem officiis
+                    voluptas corporis! Doloribus.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <span>Lorem ipsum dolor sit amet.</span>
+                <i class="ri-arrow-right-s-line accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A quas necessitatibus rem quidem placeat
+                    officia aut, culpa qui molestiae quibusdam soluta maiores deserunt inventore. Repellat veniam,
+                    dolorum distinctio eius necessitatibus quis accusantium odio magni incidunt adipisci consequatur
+                    blanditiis aliquid accusamus?</p>
+            </div>
+        </div>
+    </div><div class="accordion-container">
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <span>Lorem ipsum dolor sit amet.</span>
+                <i class="ri-arrow-right-s-line accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi adipisci id eligendi voluptatibus
+                    iure totam consequatur non asperiores obcaecati nisi quos ut, vel alias recusandae sed, iusto optio
+                    suscipit possimus nesciunt illum libero, pariatur debitis officiis veritatis. Maxime, ea quasi!</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <span>Lorem ipsum dolor sit amet.</span>
+                <i class="ri-arrow-right-s-line accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos perferendis quidem officia deserunt
+                    quam. Veniam fugiat earum vero! Incidunt omnis facilis ipsa tenetur consectetur similique voluptate
+                    placeat, provident voluptatum, fugit, quas ullam mollitia architecto labore? Quidem officiis
+                    voluptas corporis! Doloribus.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <span>Lorem ipsum dolor sit amet.</span>
+                <i class="ri-arrow-right-s-line accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A quas necessitatibus rem quidem placeat
+                    officia aut, culpa qui molestiae quibusdam soluta maiores deserunt inventore. Repellat veniam,
+                    dolorum distinctio eius necessitatibus quis accusantium odio magni incidunt adipisci consequatur
+                    blanditiis aliquid accusamus?</p>
+            </div>
+        </div>
     </div>
 
-    <div class="accordion-item">
-      <button class="accordion-header">
-        <span>Section 2</span>
-        <i class="ri-arrow-down-s-line accordion-icon"></i>
-      </button>
-      <div class="accordion-content">
-        <p>Content for section 2 goes here.</p>
-      </div>
-    </div>
-
-    <div class="accordion-item">
-      <button class="accordion-header">
-        <span>Section 3</span>
-        <i class="ri-arrow-down-s-line accordion-icon"></i>
-      </button>
-      <div class="accordion-content">
-        <p>Content for section 3 goes here.</p>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const accordionItems = document.querySelectorAll('.accordion-item');
-
-      accordionItems.forEach(item => {
-        const header = item.querySelector('.accordion-header');
-
-        header.addEventListener('click', () => {
-          const isActive = item.classList.contains('active');
-
-          // Barcha accordionlarni yopish
-          accordionItems.forEach(otherItem => {
-            otherItem.classList.remove('active');
-          });
-
-          // Faqat bosilgan accordionni ochish
-          if (!isActive) {
-            item.classList.add('active');
-          }
-        });
-      });
-    });
-  </script>
+    <script src="./script.js"></script>
 </body>
+
 </html>
