@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,7 +70,8 @@
             font-weight: 100;
         }
 
-        .pressBtn:active, .pressBtn.active {
+        .pressBtn:active,
+        .pressBtn.active {
             background-color: rgba(255, 215, 0, 0.267);
             border: 7px solid #FFD700;
             box-shadow: 0px -1px 20px 2px #FFD700;
@@ -93,17 +95,19 @@
             top: -50px;
         }
 
-        .downBtn:active, .downBtn.active {
+        .downBtn:active,
+        .downBtn.active {
             background-color: #FFD700;
             color: black;
             box-shadow: 0px -1px 30px 2px #FFD700;
         }
 
         #audioPlayer {
-            display: none; 
+            display: none;
         }
     </style>
 </head>
+
 <body>
     <div class="counter-container">
         <h1>تذكروا المسلمين</h1>
@@ -195,7 +199,7 @@
         downButton.addEventListener('click', decrementCounter);
 
         // Event keydownlari bilan ishlash
-        document.addEventListener('keydown', function(event) {
+        document.addEventListener('keydown', function (event) {
             if (event.code === 'Space') {
                 event.preventDefault();
                 incrementCounter();
@@ -217,4 +221,5 @@
         updateSpecial();
     </script>
 </body>
+
 </html>
