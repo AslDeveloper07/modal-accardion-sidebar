@@ -154,7 +154,6 @@ body {
 .main-content {
   flex: 1;
   padding: 20px;
-  /* padding-left: 260px; */
   transition: padding-left 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -232,4 +231,7 @@ body {
 
 .trash.active i {
   color: red;
+}
+h1{
+  font-size: 25px;
 }
