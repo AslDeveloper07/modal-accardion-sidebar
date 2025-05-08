@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notion-like Sidebar</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            display: flex;
+            background-color: #171717;
+            transition: margin-left 0.3s ease;
+        }
+
+        .search-container {
+            position: relative;
+            width: 100%;
+            padding: 0 14px;
+            margin-bottom: 10px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 8px 12px 8px 32px;
+            border: 1px solid #ffd9002f;
+            border-radius: 10px;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.2s ease;
+            background-color: #222222;
+            color: white;
+
+        }
+
+        .search-input:focus {
+            border-color: #ffd90059;
+            box-shadow: -1px -1px 10px 0px #ffd90093;
+            padding-left: 12px;
+        }
+
+        .search-container i {
+            position: absolute;
+            left: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ffffff;
+            transition: all 0.2s ease;
+            pointer-events: none;
+        }
+
+        .search-input:focus+i {
+            opacity: 0;
+            transform: translateY(-50%) translateX(-10px);
+        }
+
+        .sidebar-header {
+            padding: 10px 0;
+        }
+
+        .burger-menu {
+            position: fixed;
+            top: 10px;
+            left: 20px;
+            z-index: 100;
+            background: transparent;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            display: none;
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 24px;
+        }
+
+
+
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            background-color: #2a2b2e;
+            border-right: 1px solid #e0e0e027;
+            padding: 10px 0;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            will-change: transform;
+        }
+
+        .sidebar-section {
+            margin-bottom: 16px;
+        }
+
+        .sidebar-section-title {
+            padding: 6px 14px;
+            font-size: 12px;
+            color: #787774;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+            margin-top: 8px;
+        }
+
+        .sidebar-item {
+            padding: 6px 14px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 2px 6px;
+            font-size: 14px;
+            color: #ffffff;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-item:hover {
+            background-color: #e9e9e93d;
+        }
+
+        .sidebar-item i {
+            margin-right: 8px;
+            font-size: 16px;
+            color: #ffd90059;
+            transition: transform 0.2s ease;
+        }
+
+
+        .sidebar-item.add-new {
+            color: #ffffff;
+
+        }
+
+        .sidebar-item.add-new:hover {
+            background-color: #e9e9e938;
+        }
+
+        .sidebar-item.active {
+            background-color: #e0e0e021;
+
+        }
+
+        .sidebar-item.active i {
+            color: #ffd900;
+            transform: none !important;
+        }
+
+        .sidebar-icon {
+            margin-right: 8px;
+            font-size: 16px;
+            color: #5f5f5f;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+
+
+        .sidebar-icon.active {
+            color: #ffd90059;
+            transform: none !important;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            /* padding-left: 260px; */
+            transition: padding-left 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .edge-trigger {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 15px;
+            height: 100vh;
+            z-index: 90;
+            display: none;
+            background-color: transparent;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                left: 0;
+                top: 0;
+                height: 100vh;
+                z-index: 99;
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+                box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .burger-menu {
+                display: block;
+            }
+
+            .sidebar.active~.burger-menu {
+                left: 250px;
+                transform: none;
+            }
+
+            .main-content {
+                flex: 1;
+                padding: 350px 20px 0px 20px;
+                transition: padding-left 0.3s ease;
+                display: flex;
+                flex-direction: c;
+                justify-content: center;
+                align-items: center;
+                color: white;
+            }
+
+            .edge-trigger {
+                display: block;
+            }
+
+            body.sidebar-active {
+                overflow-x: hidden;
+            }
+        }
+
+        .trash i:active {
+            background-color: red;
+        }
+
+        .trash:hover {
+            background-color: rgba(255, 0, 0, 0.151);
+        }
+
+        .sidebar-item.active .trash i {
+            color: red;
+        }
+
+        .trash.active i {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="edge-trigger" id="edgeTrigger"></div>
+    <div class="burger-menu" id="burgerMenu" tabindex="0" aria-label="Toggle sidebar">
+        <i class="ri-menu-line"></i>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Quick Find">
+                <i class="ri-search-line"></i>
+            </div>
+        </div>
+
+        <div class="sidebar-section" id="mainSection">
+            <div class="sidebar-item active">
+                <i class="ri-home-4-line"></i>
+                <span>Home</span>
+            </div>
+            <div class="sidebar-item">
+                <i class="ri-file-add-line"></i>
+                <span>New Page</span>
+            </div>
+        </div>
+
+        <div class="sidebar-section" id="inboxSection">
+            <div class="sidebar-item">
+                <i class="ri-inbox-line"></i>
+                <span>Inbox</span>
+            </div>
+            <div class="sidebar-item">
+                <i class="ri-lock-line"></i>
+                <span>Private</span>
+            </div>
+        </div>
+
+        <div class="sidebar-section" id="projectsSection">
+            <div class="sidebar-section-title">Personal Projects</div>
+            <div class="sidebar-item">
+                <i class="ri-code-line sidebar-icon"></i>
+                <span>JavaScript</span>
+            </div>
+            <div class="sidebar-item">
+                <i class="ri-book-2-line sidebar-icon active"></i>
+                <span>Learning English</span>
+            </div>
+            <div class="sidebar-item add-new">
+                <i class="ri-add-line"></i>
+                <span>Add a page</span>
+            </div>
+        </div>
+
+        <div class="sidebar-section" id="teamSection">
+            <div class="sidebar-section-title">Team Spaces</div>
+            <div class="sidebar-item">
+                <i class="ri-team-line sidebar-icon active"></i>
+                <span>ASLWEX King's Notion HQ</span>
+            </div>
+            <div class="sidebar-item">
+                <i class="ri-building-2-line sidebar-icon active"></i>
+                <span>Teamspace Home</span>
+            </div>
+            <div class="sidebar-item add-new">
+                <i class="ri-add-line"></i>
+                <span>Create teamspace</span>
+            </div>
+        </div>
+
+        <div class="sidebar-section" id="workspaceSection">
+            <div class="sidebar-section-title">Workspace</div>
+            <div class="sidebar-item">
+                <i class="ri-settings-3-line sidebar-icon active"></i>
+                <span>Settings</span>
+            </div>
+            <div class="sidebar-item">
+                <i class="ri-layout-masonry-line sidebar-icon active"></i>
+                <span>Templates</span>
+            </div>
+            <div class="sidebar-item trash">
+                <i class="ri-delete-bin-line sidebar-icon"></i>
+                <span>Trash</span>
+            </div>
+        </div>
+
+        <div class="sidebar-section" id="inviteSection">
+            <div class="sidebar-item">
+                <i class="ri-user-add-line sidebar-icon active"></i>
+                <span>Invite members</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <h1>ASLWEX King's Notion HQ</h1>
+        <p>Notion qo'llanmalarni yozishingiz mumkin...</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const burgerTugma = document.getElementById('burgerMenu');
+            const yonPanel = document.getElementById('sidebar');
+            const chekkaTrigger = document.getElementById('edgeTrigger');
+            const yonPanelElementlar = document.querySelectorAll('.sidebar-item:not(.add-new)');
+            const qidiruvInput = document.getElementById('searchInput');
+
+            function yonPanelniAlmashtir() {
+                yonPanel.classList.toggle('active');
+
+                if (yonPanel.classList.contains('active')) {
+                    burgerTugma.style.display = 'none';
+                } else {
+                    burgerTugma.style.display = 'block';
+                }
+            }
+
+            yonPanelElementlar.forEach(element => {
+                element.addEventListener('click', function () {
+                    yonPanelElementlar.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            burgerTugma.addEventListener('click', yonPanelniAlmashtir);
+
+            chekkaTrigger.addEventListener('mouseenter', function () {
+                if (window.innerWidth <= 768) {
+                    yonPanel.classList.add('active');
+                    burgerTugma.style.display = 'none';
+                }
+            });
+
+            document.addEventListener('keydown', function (e) {
+                if (window.innerWidth <= 768) {
+                    if (e.key === 'Enter') {
+                        yonPanel.classList.add('active');
+                        burgerTugma.style.display = 'none';
+                    }
+                    if (e.key === 'Escape') {
+                        yonPanel.classList.remove('active');
+                        burgerTugma.style.display = 'block';
+                    }
+                }
+            });
+
+            document.addEventListener('click', function (hodisa) {
+                if (window.innerWidth <= 768) {
+                    if (!yonPanel.contains(hodisa.target) &&
+                        hodisa.target !== burgerTugma &&
+                        !burgerTugma.contains(hodisa.target) &&
+                        !chekkaTrigger.contains(hodisa.target)) {
+                        yonPanel.classList.remove('active');
+                        burgerTugma.style.display = 'block';
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
