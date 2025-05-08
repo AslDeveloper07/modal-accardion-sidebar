@@ -59,7 +59,6 @@ body {
   .accordion-content p {
     margin: 0;
     opacity: 0;
-    /* transform: translateY(-10px); */
     transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
   }
 
