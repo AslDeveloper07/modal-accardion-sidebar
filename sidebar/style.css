@@ -1,0 +1,242 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    display: flex;
+    background-color: #171717;
+    transition: margin-left 0.3s ease;
+}
+
+.search-container {
+    position: relative;
+    width: 100%;
+    padding: 0 14px;
+    margin-bottom: 10px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 8px 12px 8px 32px;
+    border: 1px solid #ffd9002f;
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.2s ease;
+    background-color: #222222;
+    color: white;
+
+}
+
+.search-input:focus {
+    border-color: #ffd90059;
+    box-shadow: -1px -1px 10px 0px #ffd90093;
+    padding-left: 12px;
+}
+
+.search-container i {
+    position: absolute;
+    left: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ffffff;
+    transition: all 0.2s ease;
+    pointer-events: none;
+}
+
+.search-input:focus+i {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-10px);
+}
+
+.sidebar-header {
+    padding: 10px 0;
+}
+
+.burger-menu {
+    position: fixed;
+    top: 10px;
+    left: 20px;
+    z-index: 100;
+    background: transparent;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: none;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 24px;
+}
+
+
+
+.sidebar {
+    width: 240px;
+    height: 100vh;
+    background-color: #2a2b2e;
+    border-right: 1px solid #e0e0e027;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+    will-change: transform;
+}
+
+.sidebar-section {
+    margin-bottom: 16px;
+}
+
+.sidebar-section-title {
+    padding: 6px 14px;
+    font-size: 12px;
+    color: #787774;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+.sidebar-item {
+    padding: 6px 14px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 2px 6px;
+    font-size: 14px;
+    color: #ffffff;
+    transition: all 0.2s ease;
+}
+
+.sidebar-item:hover {
+    background-color: #e9e9e93d;
+}
+
+.sidebar-item i {
+    margin-right: 8px;
+    font-size: 16px;
+    color: #ffd90059;
+    transition: transform 0.2s ease;
+}
+
+
+.sidebar-item.add-new {
+    color: #ffffff;
+
+}
+
+.sidebar-item.add-new:hover {
+    background-color: #e9e9e938;
+}
+
+.sidebar-item.active {
+    background-color: #e0e0e021;
+
+}
+
+.sidebar-item.active i {
+    color: #ffd900;
+    transform: none !important;
+}
+
+.sidebar-icon {
+    margin-right: 8px;
+    font-size: 16px;
+    color: #5f5f5f;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+
+
+.sidebar-icon.active {
+    color: #ffd90059;
+    transform: none !important;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    /* padding-left: 260px; */
+    transition: padding-left 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.edge-trigger {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 15px;
+    height: 100vh;
+    z-index: 90;
+    display: none;
+    background-color: transparent;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        z-index: 99;
+        transform: translateX(-100%);
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .burger-menu {
+        display: block;
+    }
+
+    .sidebar.active~.burger-menu {
+        left: 250px;
+        transform: none;
+    }
+
+    .main-content {
+        flex: 1;
+        padding: 350px 20px 0px 20px;
+        transition: padding-left 0.3s ease;
+        display: flex;
+        flex-direction: c;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+
+    .edge-trigger {
+        display: block;
+    }
+
+    body.sidebar-active {
+        overflow-x: hidden;
+    }
+}
+
+.trash i:active {
+    background-color: red;
+}
+
+.trash:hover {
+    background-color: rgba(255, 0, 0, 0.151);
+}
+
+.sidebar-item.active .trash i {
+    color: red;
+}
+
+.trash.active i {
+    color: red;
+}
